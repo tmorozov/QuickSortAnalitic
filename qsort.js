@@ -5,6 +5,7 @@ function swap(arr, i, j) {
 }
 
 exports.median_pivot = function(arr, start, finish) {
+//  swap(arr, start, ~~((finish-1)/2));
   var i1 = start;
   var i2 = ~~((finish-1)/2);
   var i3 = finish -1;
@@ -29,6 +30,7 @@ exports.median_pivot = function(arr, start, finish) {
     swap(arr, start, i3);
     return;
   }
+
 }
 
 exports.last_pivot = function (arr, start, finish) {
