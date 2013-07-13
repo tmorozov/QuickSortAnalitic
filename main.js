@@ -2,13 +2,26 @@
 
 var program = require('commander');
 var farr = require('./load_array');
-var INPUT_FILE_DEFAULT = "IntegerArray.txt";
+var sort = require('./qsort');
+var INPUT_FILE_DEFAULT = "QuickSort.txt";
 
-var clone = function(fn) {
+function clone(fn) {
     // Workaround for commander.js issue.
     // http://stackoverflow.com/a/6772648
     return fn.bind({});
 };
+
+function testSorted(arr) {
+  var len = arr.length;
+  var j=0;
+  for (var i=1; i<len; i++) {
+    if (arr[j] > arr[i]) {
+      return false;
+    }
+    j++;
+  }
+  return true;
+}
 
 if(require.main == module) {
   program
@@ -17,9 +30,10 @@ if(require.main == module) {
     .parse(process.argv);
 
   var arr = farr.loadArray(program.file);
-  var result = arr;
-  console.log('Result: ', result);
-
+//  console.log('before', testSorted(arr));
+  sort.qsort(arr);
+  console.log('Result: ', arr);
+//  console.log('after', testSorted(arr));
 } else {
 //  exports.checkHtmlFile = countInversions;
 }
