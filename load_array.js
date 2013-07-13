@@ -5,7 +5,8 @@ exports.loadArray = function (fileName) {
   return data.split("\n").filter(function (item) {
     return !!item.length
   }).map(function(item) {
-    return item;
+    // use of ~~ to convert to int
+    return ~~item;
   });
 }
 
